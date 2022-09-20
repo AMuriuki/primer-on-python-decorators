@@ -1,20 +1,28 @@
 '''
-inner functions in python are functions defined inside
-other functions. 
+using functions as return values.  
 '''
 
 
-def parent():
-    print("Printing from the parent function")
+def parent(num):
 
     def first_child():
-        print("Printing from the first_child() function")
-    
+        return "Hi, I am Emma"
+
     def second_child():
-        print("Printing from the second_child() function")
+        return "Call me Liam"
 
-    second_child()
-    first_child()
+    if num == 1:
+        # `first_child` returns a reference to the function
+        # in contrast `first_child()` refers to the result 
+        return first_child
+    else:
+        return second_child
 
+# define & assign `first` and `second` variables 
+# as references of respective `first_child` and `second_child` functions
+first = parent(1)
+second = parent(2)
 
-parent()
+# use the variables as if they are regular functions
+first()
+second()
