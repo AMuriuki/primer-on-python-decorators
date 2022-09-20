@@ -1,21 +1,20 @@
 '''
-functions in python are first class objects. 
-They can be passed around and used as arguments 
+inner functions in python are functions defined inside
+other functions. 
 '''
 
 
-def say_hello(name):
-    return f"Hello {name}"
+def parent():
+    print("Printing from the parent function")
+
+    def first_child():
+        print("Printing from the first_child() function")
+    
+    def second_child():
+        print("Printing from the second_child() function")
+
+    second_child()
+    first_child()
 
 
-def be_awesome(name):
-    return f"Yo {name}, together we are awesome"
-
-
-def greet_bob(greeter_func):
-    return greeter_func("Bob")
-
-
-greet_bob(say_hello)
-
-greet_bob(be_awesome)
+parent()
