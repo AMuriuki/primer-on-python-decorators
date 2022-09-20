@@ -1,7 +1,21 @@
 '''
-a function returns a value based on the given arguments
+functions in python are first class objects. 
+They can be passed around and used as arguments 
 '''
-def add_one(number):
-    return number + 1
 
-add_one(2)
+
+def say_hello(name):
+    return f"Hello {name}"
+
+
+def be_awesome(name):
+    return f"Yo {name}, together we are awesome"
+
+
+def greet_bob(greeter_func):
+    return greeter_func("Bob")
+
+
+greet_bob(say_hello)
+
+greet_bob(be_awesome)
