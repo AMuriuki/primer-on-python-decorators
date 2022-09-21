@@ -1,9 +1,13 @@
-def my_decorator(func):
+from datetime import datetime
+
+
+def not_during_the_night(func):
     def wrapper():
-        print("Something is happening before the function is called")
-        func()
-        print("Something is happening after the function is called")
-    # return `wrapper` as a function 
+        # run decorated during the day only
+        if 7 <= datetime.now().hour < 22:
+            func()
+        else:
+            pass
     return wrapper
 
 
@@ -11,8 +15,7 @@ def say_whee():
     print("Whee!")
 
 
-# `say_whee` variable assigned to `my_decorator(func)`
-say_whee = my_decorator(say_whee)
+say_whee = not_during_the_night(say_whee)
 
-
+# if you call between 10PM - 6AM nothing happens
 say_whee()
