@@ -1,21 +1,23 @@
-from datetime import datetime
+'''
+using decorators with the @ symbol, 
+aka `pie` syntax
+'''
 
 
-def not_during_the_night(func):
+def my_decorator(func):
     def wrapper():
-        # run decorated during the day only
-        if 7 <= datetime.now().hour < 22:
-            func()
-        else:
-            pass
+        print("Something is happening before the function is called")
+        func()
+        print("Something is happening after the function is called")
     return wrapper
 
+# below is an easier way of writing:
+# say_whee = my_decorator(say_whee)
 
+
+@my_decorator
 def say_whee():
     print("Whee!")
 
 
-say_whee = not_during_the_night(say_whee)
-
-# if you call between 10PM - 6AM nothing happens
 say_whee()
