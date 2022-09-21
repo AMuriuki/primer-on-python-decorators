@@ -1,28 +1,18 @@
-'''
-using functions as return values.  
-'''
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called")
+        func()
+        print("Something is happening after the function is called")
+    # return `wrapper` as a function 
+    return wrapper
 
 
-def parent(num):
+def say_whee():
+    print("Whee!")
 
-    def first_child():
-        return "Hi, I am Emma"
 
-    def second_child():
-        return "Call me Liam"
+# `say_whee` variable assigned to `my_decorator(func)`
+say_whee = my_decorator(say_whee)
 
-    if num == 1:
-        # `first_child` returns a reference to the function
-        # in contrast `first_child()` refers to the result 
-        return first_child
-    else:
-        return second_child
 
-# define & assign `first` and `second` variables 
-# as references of respective `first_child` and `second_child` functions
-first = parent(1)
-second = parent(2)
-
-# use the variables as if they are regular functions
-first()
-second()
+say_whee()
